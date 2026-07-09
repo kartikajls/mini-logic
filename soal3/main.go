@@ -21,7 +21,7 @@ func main() {
 		angka, err := strconv.Atoi(input)
 		if err != nil {
 			fmt.Println("Error: Input harus berupa angka!")
-			return
+			continue
 		}
 
 		if angka%2 == 0 {
@@ -31,13 +31,20 @@ func main() {
 		}
 
 		//perintah 2
-		fmt.Println("Apakah Anda Ingin Melanjutkan (y/n)")
-		endInput, _ := reader.ReadString('\n')
-		input = strings.TrimSpace(strings.ToLower(endInput))
+		for {
+			fmt.Println("Apakah Anda Ingin Melanjutkan (y/n)")
+			endInput, _ := reader.ReadString('\n')
+			pilihan := strings.TrimSpace(strings.ToLower(endInput))
 
-		if input == "n" {
-			break
+			if pilihan == "y" {
+				fmt.Print()
+				break
+			} else if pilihan == "n" {
+				fmt.Println("Program Selesai. Terimakasih.")
+				return
+			} else {
+				fmt.Print("Eror,")
+			}
 		}
 	}
-
 }
